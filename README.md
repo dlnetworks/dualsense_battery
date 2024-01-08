@@ -6,6 +6,8 @@ Output looks like this:
 when charging: `Battery %: 90 ↑`  
 not charging: `Battery %: 90 ↓`
 
-run with node:
-`npm install node-hid  
-node dualsense.js`
+install node-hid:  
+`npm install node-hid`
+
+run:  
+`node dualsense.js`
