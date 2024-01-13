@@ -8,20 +8,16 @@ const targetDevice = devices.find(device => device.vendorId === targetVendorId &
 
 if (targetDevice) {
     const controller = new HID.HID(targetDevice.path);
-    
+    controller.write([0x05]);
     controller.on('data', data => {
-        const collectionValue1 = data[53];
-        battery_level = Math.min((collectionValue1 & 0x0f) * 10 + 5, 100)
-        const charging = data[54] & 0x08;
+        const collectionValue1 = data[54];
+        const battery_level = Math.min((collectionValue1 & 0x0f) * 100 / 8, 100);
+        const charging = data[55] & 0x08;
         const is_charging = Boolean(charging);
         const arrowSymbol = is_charging ? '↑' : '↓';
         console.log('Battery %:', battery_level, arrowSymbol);
     });
-       
-    controller.on('error', error => {
-        console.error('Error:', error);
-    });
-       
+
 } else {
     console.error('Target device not found.');
 }
