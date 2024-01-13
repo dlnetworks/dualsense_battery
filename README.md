@@ -1,5 +1,5 @@
 # dualsense_battery
-Get the battery level from a playstation dual sense game controller.
+Get the battery level from a playstation dual sense game controller via bluetooth.
 
 Output looks like this:
 
@@ -11,3 +11,5 @@ install node-hid:
 
 run:  
 `node dualsense.js`
+
+note: battery levels are in ~10% increments
